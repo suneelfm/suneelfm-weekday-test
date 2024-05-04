@@ -9,6 +9,7 @@ import {
   TECH_STACKS,
   WORK_MODES,
 } from "../../data/filterOptions";
+import TextField from "../atoms/TextField";
 
 export default function FilterBar() {
   return (
@@ -16,7 +17,7 @@ export default function FilterBar() {
       <Grid item component={"h2"} textAlign={"center"} xs={12}>
         Search Jobs
       </Grid>
-      <Grid item xs={5} md={4} lg={2} paddingX={"3px"}>
+      <Grid item xs={5} sm={3} md={4} lg={2} paddingX={"3px"}>
         <Dropdown
           isMultiple={true}
           value={[]}
@@ -25,7 +26,7 @@ export default function FilterBar() {
           placeholder={"Roles"}
         />
       </Grid>
-      <Grid item xs={7} sm={4} lg={2} paddingX={"3px"}>
+      <Grid item xs={7} sm={3} lg={2} paddingX={"3px"}>
         <Dropdown
           isMultiple={true}
           value={[]}
@@ -34,7 +35,7 @@ export default function FilterBar() {
           placeholder={"No Of Employees"}
         />
       </Grid>
-      <Grid item xs={6} sm={3} md={2} lg={1} paddingX={"3px"}>
+      <Grid item xs={6} sm={3} md={2} paddingX={"3px"}>
         <Dropdown
           value={""}
           options={EXPERIENCES}
@@ -42,7 +43,7 @@ export default function FilterBar() {
           placeholder={"Experience"}
         />
       </Grid>
-      <Grid item xs={6} sm={3} md={2} paddingX={"3px"}>
+      <Grid item xs={6} sm={3} md={3} lg={2} paddingX={"3px"}>
         <Dropdown
           isMultiple={true}
           value={[]}
@@ -51,7 +52,7 @@ export default function FilterBar() {
           placeholder={"Remote"}
         />
       </Grid>
-      <Grid item xs={6} sm={4} lg={2} paddingX={"3px"}>
+      <Grid item xs={6} sm={3} md={4} lg={2} paddingX={"3px"}>
         <Dropdown
           isMultiple={true}
           value={[]}
@@ -60,12 +61,19 @@ export default function FilterBar() {
           placeholder={"Tech Stack"}
         />
       </Grid>
-      <Grid item xs={6} sm={5} md={2} paddingX={"3px"}>
+      <Grid item xs={6} sm={4} md={3} lg={2} paddingX={"3px"}>
         <Dropdown
           value={""}
           options={BASE_PAYS}
           onDropdownChange={() => {}}
           placeholder={"Min Base Pay Salary"}
+        />
+      </Grid>
+      <Grid item xs={12} sm={5} md={5} lg={4} paddingX={"3px"}>
+        <TextField
+          value={""}
+          onChange={() => {}}
+          placeholder={"Search Company Name"}
         />
       </Grid>
     </Grid>
