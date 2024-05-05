@@ -2,14 +2,14 @@
  * Options for Roles dropdown
  */
 export const ROLES = [
-  "Frontend",
-  "Backend",
-  "Fullstack",
-  "IOS",
-  "Flutter",
-  "React Native",
-  "Android",
-  "Tech Lead",
+  "frontend",
+  "backend",
+  "fullstack",
+  "ios",
+  "flutter",
+  "react native",
+  "android",
+  "tech lead",
 ];
 
 /**
@@ -20,7 +20,7 @@ export const EXPERIENCES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 /**
  * Options for Remote dropdown
  */
-export const WORK_MODES = ["Remote", "Hybrid", "In-Office"];
+export const WORK_MODES = ["remote", "hybrid", "in-office"];
 
 /**
  * Options for Tech Stack dropdown

@@ -11,7 +11,12 @@ export default function JobCard({ jobData }) {
         <div className={styles.postedTimeTag}>⏳ Posted 11 days ago</div>
       </Grid>
       <Grid container className={styles.cardHeader}>
-        <Avatar src={jobData.logoUrl} className={styles.logo} variant="square">
+        <Avatar
+          alt={jobData.companyName}
+          src={jobData.logoUrl}
+          className={styles.logo}
+          variant="square"
+        >
           {jobData.companyName.slice(0, 1).toUpperCase()}
         </Avatar>
         <Grid className={styles.companyName}>
@@ -19,14 +24,15 @@ export default function JobCard({ jobData }) {
             {jobData.companyName}
           </span>
         </Grid>
-        <Grid className={styles.jobTitle}>Frontend Engineer</Grid>
+        {/** As there is no job title in the response, displaying jobRole here*/}
+        <Grid className={styles.jobTitle}>{jobData.jobRole}</Grid>
         <Grid className={styles.location}>{jobData.location}</Grid>
       </Grid>
       <Typography className={styles.estimatedSalary}>
         Estimated Salary:{" "}
         {jobData.minJdSalary ? `$${jobData.minJdSalary} -` : "upto"}{" "}
-        {jobData.minJdSalary ? "" : "$"}
-        {jobData.maxJdSalary} PA ✅
+        {/** Using dolor symbol for salary as the data is in USD*/}
+        {jobData.minJdSalary ? "" : "$"} {jobData.maxJdSalary} PA ✅
       </Typography>
       <Typography mt={1} fontWeight={"500"} fontSize={"15px"}>
         About Company:

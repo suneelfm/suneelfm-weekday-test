@@ -13,3 +13,7 @@
   width: 100vw;
   overflow: auto;
 }
+
+li {
+  text-transform: capitalize !important;
+}
