@@ -24,16 +24,20 @@
 .logo {
   position: absolute !important;
   left: 5px;
-  top: 0;
+  top: 5px;
   height: 40px !important;
   width: 40px !important;
 }
 
-.companyName {
+.companyName > span {
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 3px;
   color: #8b8b8b;
+  cursor: pointer;
+}
+.companyName > span:hover {
+  text-decoration: underline;
 }
 
 .jobTitle {
@@ -44,6 +48,7 @@
   font-size: 10px;
   font-weight: 500 !important;
   margin-top: 6px !important;
+  text-transform: capitalize;
 }
 
 .estimatedSalary {
@@ -54,7 +59,7 @@
 }
 
 .aboutCompany {
-  font-size: 14px !important;
+  font-size: 13px !important;
   height: 180px;
   overflow: hidden;
   mask-image: linear-gradient(

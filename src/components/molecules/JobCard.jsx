@@ -3,48 +3,47 @@ import React from "react";
 import styles from "../../styles/JobCard.module.css";
 import CustomButton from "../atoms/CustomButton";
 
-export default function JobCard() {
+export default function JobCard({ jobData }) {
   return (
     <Box className={styles.jobCard}>
-      <Grid container mb={3}>
+      <Grid container mb={2}>
+        {/** I am displaying static sample time as there is not created time date in response */}
         <div className={styles.postedTimeTag}>⏳ Posted 11 days ago</div>
       </Grid>
       <Grid container className={styles.cardHeader}>
-        <Avatar className={styles.logo} variant="square">
-          A
+        <Avatar src={jobData.logoUrl} className={styles.logo} variant="square">
+          {jobData.companyName.slice(0, 1).toUpperCase()}
         </Avatar>
-        <Grid className={styles.companyName}>Firefly</Grid>
+        <Grid className={styles.companyName}>
+          <span onClick={() => window.open(jobData.jdLink, "_blank")}>
+            {jobData.companyName}
+          </span>
+        </Grid>
         <Grid className={styles.jobTitle}>Frontend Engineer</Grid>
-        <Grid className={styles.location}>Banglore</Grid>
+        <Grid className={styles.location}>{jobData.location}</Grid>
       </Grid>
       <Typography className={styles.estimatedSalary}>
-        Estimated Salary: {"₹30 - 50 LPA"} ✅
+        Estimated Salary:{" "}
+        {jobData.minJdSalary ? `$${jobData.minJdSalary} -` : "upto"}{" "}
+        {jobData.minJdSalary ? "" : "$"}
+        {jobData.maxJdSalary} PA ✅
       </Typography>
       <Typography mt={1} fontWeight={"500"} fontSize={"15px"}>
         About Company:
       </Typography>
       <Grid container className={styles.aboutCompany}>
-        About us Firefly is a Cloud Asset Management solution that enables
-        DevOps, SRE, and Cloud Platform teams to rediscover their entire cloud
-        footprint, understand which parts of it are codified vs unmanaged,
-        detect drifts to prevent service failures, classify assets using
-        Policy-as-Code, and manage a single inventory of all their cloud
-        resources across Multi-Cloud, and Kubernetes clusters.At Pinch, our
-        dream is to transform the home ecosystem around families and help them
-        create space for the truly important things, allowing them to focus on
-        themselves and their well-being to build meaningful lives, filled with
-        purpose and joy.F
+        {jobData.jobDetailsFromCompany}
       </Grid>
       <Grid className={styles.viewJobLink}>
-        <a href="/" target="_blank">
-          View job
-        </a>
+        <a href={jobData.jdLink}>View job</a>
       </Grid>
       <Grid className={styles.minExp} mb={1}>
         <Typography component={"h3"}>Minimum Experience</Typography>
-        <Typography>4 years</Typography>
+        <Typography>
+          {jobData.minExp ?? 0} year{jobData.minExp > 1 ? "s" : ""}
+        </Typography>
       </Grid>
-      <CustomButton onClick={() => {}}>⚡ Easy Apply</CustomButton>
+      <CustomButton>⚡ Easy Apply</CustomButton>
     </Box>
   );
 }
