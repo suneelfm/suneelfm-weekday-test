@@ -36,5 +36,6 @@ export const TECH_STACKS = [
 
 /**
  * Options for Minimum Base Pay Salary dropdown
+ * Using dolor symbol as the salary currency type is USD
  */
-export const BASE_PAYS = ["0L", "10L", "20L", "30L", "40L", "50L"];
+export const BASE_PAYS = ["0$", "10$", "20$", "30$", "40$", "50$"];
