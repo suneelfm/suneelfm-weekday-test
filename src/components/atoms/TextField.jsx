@@ -7,7 +7,7 @@ export default function TextField({ value = "", onChange, placeholder = "" }) {
       <label className={styles.label}>{value ? placeholder : ""}</label>
       <input
         className={styles.textField}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value, e)}
         value={value}
         placeholder={placeholder}
       />
