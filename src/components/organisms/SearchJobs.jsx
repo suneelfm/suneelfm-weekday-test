@@ -28,12 +28,26 @@ export default function SearchJobs() {
     console.log(filters);
   }, [filters]);
 
+  const handleScroll = (e) => {
+    const { scrollHeight, scrollTop, clientHeight } = e.target;
+    let timeoutId;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      if (
+        Math.floor(scrollHeight - (scrollTop + clientHeight)) <= 0 &&
+        reqCount * 10 < jobsData.totalCount
+      ) {
+        setReqCount(reqCount + 1);
+      }
+    }, 200);
+  };
+
   useEffect(() => {
     getAllJobs();
   }, [reqCount]);
 
   return (
-    <Grid container my={1}>
+    <div className="viewport" onScroll={handleScroll}>
       <FilterBar />
       <Grid container p={3} spacing={4}>
         {jobsData?.jdList?.map((job, i) => (
@@ -42,15 +56,17 @@ export default function SearchJobs() {
           </Grid>
         ))}
       </Grid>
-      <Grid
-        container
-        justifyContent={"center"}
-        alignItems={"flex-end"}
-        height={"50px"}
-        mb={2}
-      >
-        {isLoading && <CircularProgress />}
-      </Grid>
-    </Grid>
+      {(reqCount === 0 || reqCount * 10 < jobsData.totalCount) && (
+        <Grid
+          container
+          justifyContent={"center"}
+          alignItems={"flex-end"}
+          height={"50px"}
+          mb={2}
+        >
+          {isLoading && <CircularProgress />}
+        </Grid>
+      )}
+    </div>
   );
 }

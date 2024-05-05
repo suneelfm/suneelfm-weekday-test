@@ -33,7 +33,7 @@ export default function FilterBar() {
   const dispatch = useDispatch();
 
   return (
-    <Grid container px={3}>
+    <Grid container px={3} pt={1}>
       <Grid item component={"h2"} textAlign={"center"} xs={12}>
         Search Jobs
       </Grid>
